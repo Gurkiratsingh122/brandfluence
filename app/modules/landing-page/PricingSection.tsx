@@ -2,6 +2,9 @@
 
 import { DollarSign } from 'lucide-react';
 import { SectionHeading } from '@/app/components/UI/SectionHeading';
+import { Button } from '@/app/components/UI/Button';
+import { GradientContainer } from '@/app/components/UI/GradientContainer';
+import { Section } from '@/app/components/UI/Section';
 
 export function PricingSection() {
   const pricingDetails = [
@@ -23,8 +26,8 @@ export function PricingSection() {
   ];
 
   return (
-    <section className="max-w-300 mx-auto px-8 my-20">
-      <div className="bg-linear-to-br from-cyan-600 via-teal-500 to-cyan-600 rounded-[40px] p-12 md:p-16 shadow-2xl">
+    <Section id="pricing" className="max-w-300">
+      <GradientContainer>
         <SectionHeading
           tagIcon={DollarSign}
           tagText="Plan Options"
@@ -67,12 +70,12 @@ export function PricingSection() {
 
         {/* CTA Button */}
         <div className="text-center">
-          <button className="group px-8 py-4 bg-white text-cyan-600 rounded-full hover:shadow-2xl transition-all font-semibold text-lg flex items-center gap-2 mx-auto">
+          <Button variant="dark">
             Sign Up Free
             <span className="group-hover:translate-x-1 transition-transform">→</span>
-          </button>
+          </Button>
         </div>
-      </div>
-    </section>
+      </GradientContainer>
+    </Section>
   );
 }

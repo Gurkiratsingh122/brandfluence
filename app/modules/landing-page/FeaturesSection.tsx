@@ -2,6 +2,10 @@
 
 import { Users, DollarSign, MessageSquare, TrendingUp, Zap } from 'lucide-react';
 import { SectionHeading } from '@/app/components/UI/SectionHeading';
+import { Button } from '@/app/components/UI/Button';
+import { Card } from '@/app/components/UI/Card';
+import { IconBadge } from '@/app/components/UI/IconBadge';
+import { Section } from '@/app/components/UI/Section';
 
 export function FeaturesSection() {
   const features = [
@@ -32,7 +36,7 @@ export function FeaturesSection() {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20" id="features">
+    <Section id="features">
       <SectionHeading
         tagIcon={Zap}
         tagText="Our Features"
@@ -44,29 +48,22 @@ export function FeaturesSection() {
         {features.map((feature, index) => {
           const Icon = feature.icon;
           return (
-            <div 
-              key={index} 
-              className="group bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-slate-100"
-            >
-              <div className={`w-14 h-14 bg-linear-to-br ${feature.color} rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg group-hover:scale-110 transition-transform`}>
-                <Icon className="w-7 h-7" />
-              </div>
+            <Card key={index} className="group">
+              <IconBadge icon={Icon} gradient={feature.color} className="mb-6" />
               <h3 className="text-xl font-bold text-slate-900 mb-3">
                 {feature.title}
               </h3>
               <p className="text-slate-600 leading-relaxed">
                 {feature.description}
               </p>
-            </div>
+            </Card>
           );
         })}
       </div>
 
       <div className="text-center">
-        <button className="px-8 py-4 bg-cyan-600 text-white rounded-full hover:bg-cyan-700 transition-all shadow-lg hover:shadow-xl font-semibold">
-          Get Started Free
-        </button>
+        <Button>Get Started Free</Button>
       </div>
-    </section>
+    </Section>
   );
 }

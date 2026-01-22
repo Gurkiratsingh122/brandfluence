@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { HelpCircle, Plus, Minus } from 'lucide-react';
 import { SectionHeading } from '@/app/components/UI/SectionHeading';
+import { Button } from '@/app/components/UI/Button';
+import { Section } from '@/app/components/UI/Section';
 
 interface FAQ {
   question: string;
@@ -44,7 +46,7 @@ export function FAQSection() {
   };
 
   return (
-    <section className="max-w-4xl mx-auto px-6 py-20">
+    <Section maxWidth="sm">
       <SectionHeading
         tagIcon={HelpCircle}
         tagText="FAQ"
@@ -54,7 +56,7 @@ export function FAQSection() {
 
       <div className="space-y-4">
         {faqs.map((faq, index) => (
-          <div 
+          <div
             key={index}
             className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all border border-slate-100 overflow-hidden"
           >
@@ -65,11 +67,10 @@ export function FAQSection() {
               <span className="font-semibold text-lg text-slate-900 pr-8">
                 {faq.question}
               </span>
-              <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                openIndex === index 
-                  ? 'bg-cyan-600 text-white rotate-180' 
+              <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all ${openIndex === index
+                  ? 'bg-cyan-600 text-white rotate-180'
                   : 'bg-slate-100 text-slate-600 group-hover:bg-slate-200'
-              }`}>
+                }`}>
                 {openIndex === index ? (
                   <Minus className="w-5 h-5" />
                 ) : (
@@ -77,10 +78,9 @@ export function FAQSection() {
                 )}
               </div>
             </button>
-            
-            <div className={`overflow-hidden transition-all duration-300 ${
-              openIndex === index ? 'max-h-96' : 'max-h-0'
-            }`}>
+
+            <div className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-96' : 'max-h-0'
+              }`}>
               <div className="px-6 pb-6 pt-0">
                 <p className="text-slate-600 leading-relaxed">
                   {faq.answer}
@@ -93,10 +93,8 @@ export function FAQSection() {
 
       <div className="mt-12 text-center">
         <p className="text-slate-600 mb-4">Still have questions?</p>
-        <button className="px-8 py-3 border-2 border-cyan-600 text-cyan-600 rounded-full hover:bg-cyan-50 transition-all font-semibold">
-          Contact Support
-        </button>
+        <Button variant="secondary">Contact Support</Button>
       </div>
-    </section>
+    </Section>
   );
 }

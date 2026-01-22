@@ -2,6 +2,9 @@
 
 import { Briefcase, ArrowUpRight } from 'lucide-react';
 import { SectionHeading } from '@/app/components/UI/SectionHeading';
+import { Button } from '@/app/components/UI/Button';
+import { Card } from '@/app/components/UI/Card';
+import { Section } from '@/app/components/UI/Section';
 
 export function TestimonialsSection() {
   const testimonials = [
@@ -32,7 +35,7 @@ export function TestimonialsSection() {
   ];
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <Section id="testimonials">
       <SectionHeading
         tagIcon={Briefcase}
         tagText="Top Cases"
@@ -42,15 +45,12 @@ export function TestimonialsSection() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
         {testimonials.map((testimonial, index) => (
-          <div 
-            key={index}
-            className="group bg-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-slate-100 flex flex-col justify-between min-h-95"
-          >
+          <Card key={index} className="group flex flex-col justify-between min-h-95">
             {/* Company Logo */}
             <div className="mb-6">
               <div className="w-20 h-20 rounded-2xl overflow-hidden bg-slate-100">
-                <img 
-                  src={testimonial.logo} 
+                <img
+                  src={testimonial.logo}
                   alt={testimonial.company}
                   className="w-full h-full object-cover"
                 />
@@ -79,15 +79,15 @@ export function TestimonialsSection() {
                 <ArrowUpRight className="w-5 h-5" />
               </button>
             </div>
-          </div>
+          </Card>
         ))}
       </div>
 
       <div className="text-center">
-        <button className="px-8 py-4 bg-linear-to-r from-cyan-600 to-teal-500 text-white rounded-full hover:shadow-2xl transition-all font-semibold">
+        <Button variant="gradient">
           View All Case Studies
-        </button>
+        </Button>
       </div>
-    </section>
+    </Section>
   );
 }

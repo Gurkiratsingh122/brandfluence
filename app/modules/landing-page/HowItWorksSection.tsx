@@ -2,6 +2,11 @@
 
 import { DollarSign, Target, Lightbulb, BarChart3, Rocket } from 'lucide-react';
 import { SectionHeading } from '@/app/components/UI/SectionHeading';
+import { Button } from '@/app/components/UI/Button';
+import { Card } from '@/app/components/UI/Card';
+import { IconBadge } from '@/app/components/UI/IconBadge';
+import { GradientContainer } from '@/app/components/UI/GradientContainer';
+import { Section } from '@/app/components/UI/Section';
 
 export function HowItWorksSection() {
   const steps = [
@@ -36,8 +41,8 @@ export function HowItWorksSection() {
   ];
 
   return (
-    <section className="max-w-300 mx-auto px-8 my-20">
-      <div className="bg-linear-to-br from-cyan-600 via-teal-500 to-cyan-600 rounded-[40px] px-8 py-20 shadow-2xl">
+    <Section id="how-it-works" className="max-w-300">
+      <GradientContainer>
         <SectionHeading
           tagIcon={Rocket}
           tagText="How it works"
@@ -51,14 +56,9 @@ export function HowItWorksSection() {
           {steps.map((step, index) => {
             const Icon = step.icon;
             return (
-              <div 
-                key={index} 
-                className="group bg-white/95 backdrop-blur-sm rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-              >
+              <Card key={index} variant="glassmorphism" className="group">
                 <div className="flex justify-between items-start mb-6">
-                  <div className={`w-14 h-14 bg-linear-to-br ${step.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform`}>
-                    <Icon className="w-7 h-7" />
-                  </div>
+                  <IconBadge icon={Icon} gradient={step.gradient} className="mb-0" />
                   <div className="text-5xl font-bold text-slate-200 group-hover:text-slate-300 transition-colors">
                     {step.number}
                   </div>
@@ -69,18 +69,18 @@ export function HowItWorksSection() {
                 <p className="text-slate-600 leading-relaxed">
                   {step.description}
                 </p>
-              </div>
+              </Card>
             );
           })}
         </div>
 
         <div className="text-center mt-12">
-          <button className="group px-8 py-4 bg-white text-cyan-600 rounded-full hover:shadow-2xl transition-all font-semibold text-lg flex items-center gap-2 mx-auto">
+          <Button variant="dark">
             Get Started Free
             <span className="group-hover:translate-x-1 transition-transform">→</span>
-          </button>
+          </Button>
         </div>
-      </div>
-    </section>
+      </GradientContainer>
+    </Section>
   );
 }

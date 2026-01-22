@@ -2,10 +2,12 @@
 
 import { Users, BarChart3 } from 'lucide-react';
 import { SectionHeading } from '@/app/components/UI/SectionHeading';
+import { Card } from '@/app/components/UI/Card';
+import { Section } from '@/app/components/UI/Section';
 
 export function WhyUsSection() {
   return (
-    <section className="max-w-7xl mx-auto px-6 py-20">
+    <Section id="why-us">
       <SectionHeading
         tagIcon={Users}
         tagText="Why us?"
@@ -15,15 +17,15 @@ export function WhyUsSection() {
 
       <div className="grid lg:grid-cols-2 gap-8">
         {/* CPV Model Card */}
-        <div className="group bg-linear-to-br from-cyan-50 to-teal-50 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all">
+        <Card variant="gradient" className="from-cyan-50 to-teal-50">
           <h3 className="text-2xl font-bold text-slate-900 mb-4">
             Pay Only for Real Views (CPV Model)
           </h3>
           <p className="text-slate-700 mb-8 leading-relaxed">
-            You decide how much you'll pay per 1,000 authentic views. Every time an influencer's video racks up 
+            You decide how much you'll pay per 1,000 authentic views. Every time an influencer's video racks up
             1,000 qualified views (≥5 sec watch), your balance draws down. No more CPM guesswork—just transparent ROI.
           </p>
-          
+
           {/* Mock Browser Window */}
           <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-2 border-slate-200 shadow-lg">
             <div className="flex items-center gap-2 mb-6">
@@ -38,18 +40,18 @@ export function WhyUsSection() {
               <div className="h-3 bg-linear-to-r from-orange-500 to-orange-400 rounded-full w-2/3"></div>
             </div>
           </div>
-        </div>
+        </Card>
 
         {/* Dashboard Card */}
-        <div className="group bg-linear-to-br from-orange-50 to-pink-50 p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all">
+        <Card variant="gradient" className="from-orange-50 to-pink-50">
           <h3 className="text-2xl font-bold text-slate-900 mb-4">
             Real-Time Dashboard & Attribution
           </h3>
           <p className="text-slate-700 mb-8 leading-relaxed">
-            Watch your campaign performance in real time: authentic view counts, platform breakdowns, audience 
+            Watch your campaign performance in real time: authentic view counts, platform breakdowns, audience
             demographics, engagement rates, and CPV vs. budget usage. Data syncs directly from each social API—no delays.
           </p>
-          
+
           {/* Mock Analytics Card */}
           <div className="bg-white/80 backdrop-blur-sm p-6 rounded-2xl border-2 border-slate-200 shadow-lg">
             <div className="space-y-4">
@@ -68,8 +70,8 @@ export function WhyUsSection() {
               </div>
             </div>
           </div>
-        </div>
+        </Card>
       </div>
-    </section>
+    </Section>
   );
 }
