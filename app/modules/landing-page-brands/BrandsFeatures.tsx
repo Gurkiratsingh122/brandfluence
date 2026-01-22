@@ -31,7 +31,7 @@ export function BrandsFeatures() {
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {FEATURES.map((feature, index) => {
                         const Icon = iconMap[feature.icon as keyof typeof iconMap] || CreditCard;
-                        
+
                         return (
                             <FeatureCard
                                 key={index}

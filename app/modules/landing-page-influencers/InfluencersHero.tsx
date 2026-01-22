@@ -34,9 +34,9 @@ export function InfluencersHero() {
 
                         {/* CTA Buttons */}
                         <div className="flex items-center gap-4">
-                            <Button 
-                              variant="primary" 
-                              className="flex items-center justify-center gap-2"
+                            <Button
+                                variant="primary"
+                                className="flex items-center justify-center gap-2"
                             >
                                 <span className="text-base font-medium">Become Creator</span>
                                 <div className="w-7 h-7 bg-white rounded-full flex items-center justify-center">

@@ -7,16 +7,14 @@ import { InfluencersEarnings } from '@/app/modules/landing-page-influencers/Infl
 import { InfluencersFAQ } from '@/app/modules/landing-page-influencers/InfluencersFAQ';
 
 export default function InfluencersPage() {
-  return (
-    <div className="min-h-screen bg-white">
-      <main className="pt-18.25">
-        <InfluencersHero />
-        <InfluencersWhyUs />
-        <InfluencersHowToEarn />
-        <InfluencersEarnings />
-        <InfluencersFAQ />
-      </main>
-    </div>
-  );
+    return (
+        <div className="min-h-screen bg-white">
+            <InfluencersHero />
+            <InfluencersWhyUs />
+            <InfluencersHowToEarn />
+            <InfluencersEarnings />
+            <InfluencersFAQ />
+        </div>
+    );
 }
 

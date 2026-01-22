@@ -46,8 +46,8 @@ export function StepCard({
                         <li
                             key={index}
                             className={`text-sm ${index % 2 === 0
-                                    ? 'font-semibold text-gray-900'
-                                    : 'text-gray-600'
+                                ? 'font-semibold text-gray-900'
+                                : 'text-gray-600'
                                 } leading-relaxed`}
                         >
                             {index % 2 === 0 ? '• ' : '  '}{detail}

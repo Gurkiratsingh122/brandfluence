@@ -34,7 +34,7 @@ export function InfluencersFAQ() {
     return (
         <section className="py-20 bg-white">
             <div className="max-w-4xl mx-auto px-4">
-                <ReusableFAQ 
+                <ReusableFAQ
                     faqs={INFLUENCER_FAQS}
                     title="Creator FAQ"
                     subtitle="Everything you need to know about earning on BilledViews"
