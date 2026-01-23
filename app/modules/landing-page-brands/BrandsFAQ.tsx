@@ -8,7 +8,7 @@ export function BrandsFAQ() {
         <ReusableFAQ
             faqs={FAQS}
             title="Frequently Asked Questions"
-            subtitle="Everything you need to know about BilledViews for brands"
+            subtitle="Everything you need to know about BrandFluence for brands"
             defaultOpenIndex={0}
             contactCTA={{
                 enabled: true,

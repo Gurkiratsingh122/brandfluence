@@ -25,7 +25,7 @@ export function InfluencersHero() {
                                 <span className="text-purple-600">View Instantly</span>
                             </h1>
                             <p className="text-xl leading-relaxed text-gray-700">
-                                Join thousands of creators earning real money with BilledViews. No follower minimums. No vanity metrics. Just pure, transparent pay-per-view.
+                                Join thousands of creators earning real money with BrandFluence. No follower minimums. No vanity metrics. Just pure, transparent pay-per-view.
                             </p>
                             <p className="text-sm font-medium text-gray-700">
                                 Approve Campaigns. Upload Content. Get Paid.

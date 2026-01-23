@@ -10,7 +10,7 @@ const INFLUENCER_FAQS = [
     },
     {
         question: 'Do I need a minimum follower count?',
-        answer: 'No! BilledViews pays based on verified views, not follower count. Creators with 100 followers or 100K followers can both earn equally by getting views.'
+        answer: 'No! BrandFluence pays based on verified views, not follower count. Creators with 100 followers or 100K followers can both earn equally by getting views.'
     },
     {
         question: 'When do I get paid?',
@@ -32,21 +32,17 @@ const INFLUENCER_FAQS = [
 
 export function InfluencersFAQ() {
     return (
-        <section className="py-20 bg-white">
-            <div className="max-w-4xl mx-auto px-4">
-                <ReusableFAQ
-                    faqs={INFLUENCER_FAQS}
-                    title="Creator FAQ"
-                    subtitle="Everything you need to know about earning on BilledViews"
-                    defaultOpenIndex={0}
-                    contactCTA={{
-                        enabled: true,
-                        title: "Still have questions?",
-                        description: "Our creator support team is here to help you succeed.",
-                        buttonText: "Contact Support",
-                    }}
-                />
-            </div>
-        </section>
+        <ReusableFAQ
+            faqs={INFLUENCER_FAQS}
+            title="Creator FAQ"
+            subtitle="Everything you need to know about earning on BrandFluence"
+            defaultOpenIndex={0}
+            contactCTA={{
+                enabled: true,
+                title: "Still have questions?",
+                description: "Our creator support team is here to help you succeed.",
+                buttonText: "Contact Support",
+            }}
+        />
     );
 }

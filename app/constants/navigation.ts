@@ -1,7 +1,7 @@
 // Navigation Links
 export const navLinks = [
-  { href: "#brands", label: "For Brands" },
-  { href: "#influencers", label: "For Influencers" },
+  { href: "/landing-page/brands", label: "For Brands" },
+  { href: "/landing-page/influencers", label: "For Influencers" },
   //   { href: '#agencies', label: 'For Agencies' },
 ];
 

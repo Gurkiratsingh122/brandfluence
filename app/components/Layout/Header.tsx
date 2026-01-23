@@ -13,9 +13,9 @@ export function Header() {
             <div className="max-w-7xl mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
                     {/* Logo */}
-                    <div className="text-2xl font-bold text-slate-900">
+                    <Link href={"/"} className="text-2xl font-bold text-slate-900">
                         Brand<span className="text-cyan-600">Fluence</span>
-                    </div>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex gap-8 text-sm text-slate-700">
