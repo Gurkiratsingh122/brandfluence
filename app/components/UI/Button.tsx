@@ -10,6 +10,7 @@ interface ButtonProps {
     onClick?: () => void;
     disabled?: boolean;
     type?: 'button' | 'submit' | 'reset';
+    borderless?: boolean;
 }
 
 const variantStyles = {
@@ -33,16 +34,18 @@ export function Button({
     onClick,
     disabled = false,
     type = 'button',
+    borderless = false,
 }: ButtonProps) {
     const baseStyles = variantStyles[variant];
     const sizeStyle = size !== 'lg' ? sizeStyles[size] : '';
+    const borderlessStyles = borderless ? 'border-0! shadow-none hover:shadow-none' : '';
 
     return (
         <button
             type={type}
             onClick={onClick}
             disabled={disabled}
-            className={`${baseStyles} ${sizeStyle} ${className} disabled:opacity-50 disabled:cursor-not-allowed`}
+            className={`${baseStyles} ${sizeStyle} ${borderlessStyles} ${className} disabled:opacity-50 disabled:cursor-not-allowed`}
         >
             {children}
         </button>

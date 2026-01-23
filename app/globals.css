@@ -24,3 +24,23 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+.flag-dropdown {
+border-radius: 12px !important;
+width: 50px !important;
+padding: 6px !important;
+background-color: #ffffff !important;
+}
+
+.react-tel-input .flag-dropdown.open .selected-flag {
+  border-radius: 12px !important;
+}
+
+.form-control {
+  padding-left: 10px !important;
+}
+
+.react-tel-input .selected-flag:hover, .react-tel-input .selected-flag:focus {
+  border-radius: 12px !important;
+}

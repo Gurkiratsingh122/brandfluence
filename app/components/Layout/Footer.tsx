@@ -13,7 +13,7 @@ export function Footer() {
     ];
 
     return (
-        <footer className="bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 text-white mt-32">
+        <footer className="bg-linear-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
             <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
                 {/* Main Footer Content */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-6 gap-12 mb-12">
