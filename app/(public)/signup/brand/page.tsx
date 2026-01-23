@@ -8,7 +8,7 @@ import { AddPaymentForm } from '@/app/modules/signup/brands/AddPaymentForm';
 import { SignupFormData, SignupStep } from '@/app/types/signup';
 
 export default function SignupPage() {
-    const [currentStep, setCurrentStep] = useState<SignupStep>('credentials');
+    const [currentStep, setCurrentStep] = useState<string>('credentials');
     const [formData, setFormData] = useState<SignupFormData>({
         credentials: {
             companyName: '',
@@ -63,15 +63,11 @@ export default function SignupPage() {
         alert('Account created successfully!');
     };
 
-    const steps: SignupStep[] = ['credentials', 'company', 'payment'];
+    const steps = [{key:'credentials', label:'Account Credentials'}, {key:'company', label:'Company Details'}, {key:'payment', label:'Payment Info'}];
 
     return (
         <div className="min-h-screen bg-linear-to-b from-blue-50 to-indigo-50 flex items-center justify-center p-14">
             <div className="w-full max-w-full">
-                {/* Logo */}
-                <h1 className="text-3xl font-bold text-gray-900 text-center mb-6">
-                    BrandFluence
-                </h1>
 
                 {/* Card Container */}
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl mx-auto">

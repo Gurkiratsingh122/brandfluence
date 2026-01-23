@@ -7,7 +7,8 @@ export type FormItemType =
   | "password"
   | "checkbox"
   | "phone"
-  | "select";
+  | "select"
+  | "textarea";
 
 export interface FormItemConfig {
   name: string;

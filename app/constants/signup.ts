@@ -166,3 +166,150 @@ export const companyDetailsFormItems: FormItemConfig[] = [
     colSpan: 2,
   },
 ];
+
+export const influencerCredentialsItems: FormItemConfig[] = [
+  {
+    name: "fullName",
+    label: "Your Full Name",
+    type: "input",
+    placeholder: "Enter Your Full Name",
+    colSpan: 1,
+    rules: [{ required: true }],
+  },
+  {
+    name: "username",
+    label: "Username",
+    type: "input",
+    placeholder: "Choose a unique username",
+    helperText: "This will appear on your profile.",
+    rules: [{ required: true }],
+    itemClassname: "mb-0!",
+  },
+  {
+    name: "email",
+    label: "Email Address",
+    type: "email",
+    placeholder: "Enter Your Email",
+    colSpan: 2,
+    rules: [{ required: true, type: "email" }],
+  },
+  {
+    name: "password",
+    label: "Create Password",
+    type: "password",
+    placeholder: "Enter Your Password",
+    rules: [{ required: true, min: 8 }],
+    helperText: "Min. 8 characters, including a number & symbol.",
+    itemClassname: "mb-0!",
+  },
+  {
+    name: "confirmPassword",
+    label: "Confirm Password",
+    type: "password",
+    placeholder: "Confirm Your Password",
+    dependencies: ["password"],
+    itemClassname: "mb-0!",
+    rules: [
+      { required: true },
+      ({ getFieldValue }) => ({
+        validator(_, value) {
+          if (!value || value === getFieldValue("password")) {
+            return Promise.resolve();
+          }
+          return Promise.reject("Passwords do not match");
+        },
+      }),
+    ],
+  },
+];
+
+// constants/influencerNiches.ts
+export const INFLUENCER_NICHES = [
+  { label: "Fashion", value: "fashion" },
+  { label: "Beauty & Skincare", value: "beauty" },
+  { label: "Fitness & Health", value: "fitness" },
+  { label: "Travel", value: "travel" },
+  { label: "Food & Cooking", value: "food" },
+  { label: "Tech & Gadgets", value: "tech" },
+  { label: "Gaming", value: "gaming" },
+  { label: "Finance & Crypto", value: "finance" },
+  { label: "Education", value: "education" },
+  { label: "Business & Startups", value: "business" },
+  { label: "Lifestyle", value: "lifestyle" },
+  { label: "Parenting & Family", value: "parenting" },
+  { label: "Photography", value: "photography" },
+  { label: "Music", value: "music" },
+  { label: "Art & Design", value: "art" },
+  { label: "Sports", value: "sports" },
+  { label: "Entertainment", value: "entertainment" },
+  { label: "Mental Health", value: "mental_health" },
+  { label: "Motivation & Self Growth", value: "self_growth" },
+  { label: "Spirituality", value: "spirituality" },
+];
+
+export const COUNTRIES = [
+  { label: "United States", value: "US" },
+  { label: "United Kingdom", value: "UK" },
+  { label: "Canada", value: "CA" },
+  { label: "Australia", value: "AU" },
+  { label: "New Zealand", value: "NZ" },
+  { label: "India", value: "IN" },
+  { label: "Brazil", value: "BR" },
+];
+
+export const influencerProfileItems: FormItemConfig[] = [
+  {
+    name: "niche",
+    label: "Your Niche",
+    type: "select",
+    placeholder: "Select your target industry",
+    options: INFLUENCER_NICHES,
+    rules: [{ required: true }],
+  },
+  {
+    name: "country",
+    label: "Country",
+    type: "select",
+    placeholder: "Select your country",
+    options: COUNTRIES,
+    rules: [{ required: true }],
+  },
+  {
+    name: "bio",
+    label: "Short Bio",
+    type: "textarea",
+    colSpan: 2,
+    rules: [{ required: true, min: 30 }],
+  },
+  {
+    name: "website",
+    label: "Website / Portfolio",
+    type: "input",
+    colSpan: 2,
+    helperText: "Optional, but helps us verify your brand",
+    itemClassname: "mb-0!",
+  },
+];
+
+export const influencerPayoutItems: FormItemConfig[] = [
+  {
+    name: "paypalEmail",
+    label: "PayPal Email",
+    type: "email",
+    rules: [{ required: true, type: "email" }],
+    colSpan: 2,
+  },
+  {
+    name: "agreedToPayoutTerms",
+    type: "checkbox",
+    label:
+      "I confirm that all information provided is accurate and I accept payout terms.",
+    rules: [
+      {
+        validator: (_, v) =>
+          v ? Promise.resolve() : Promise.reject("Required"),
+      },
+    ],
+    colSpan: 2,
+  },
+];

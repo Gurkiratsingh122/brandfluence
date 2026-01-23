@@ -25,7 +25,7 @@ export function FormItemRenderer({ items }: FormItemRendererProps) {
                             className={item.itemClassname}
                             label={
                                 item.type !== 'checkbox' && item.label ? (
-                                    <span className="font-medium text-gray-700">
+                                    <span className="font-normal text-gray-700">
                                         {item.label}
                                     </span>
                                 ) : undefined
@@ -61,6 +61,16 @@ function renderField(item: FormItemConfig, form: any) {
                     size="large"
                     placeholder={item.placeholder}
                     className={baseClass}
+                />
+            );
+
+        case "textarea":
+            return (
+                <Input.TextArea
+                    size="large"
+                    placeholder={item.placeholder}
+                    className={baseClass + " resize-none!"}
+                    rows={4}
                 />
             );
 
