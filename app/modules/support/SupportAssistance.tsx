@@ -2,17 +2,53 @@
 
 import { useState } from 'react';
 import { Mail, MapPin } from 'lucide-react';
+import { Form } from 'antd';
+import { FormItemRenderer } from '@/app/components/FormItemRenderer';
+import { Button } from '@/app/components/UI/Button';
+import { FormItemConfig } from '@/app/types/formItem';
 
 type SupportTopic = 'campaign' | 'payment' | 'account' | 'refund';
 
 export function SupportAssistance() {
+  const [form] = Form.useForm();
   const [selectedTopics, setSelectedTopics] = useState<SupportTopic[]>([]);
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    topic: '',
-    message: ''
-  });
+
+  const formItems: FormItemConfig[] = [
+    {
+      name: 'name',
+      label: 'Name',
+      type: 'input',
+      placeholder: 'Enter name',
+      rules: [{ required: true, message: 'Name is required' }],
+    },
+    {
+      name: 'email',
+      label: 'Email',
+      type: 'email',
+      placeholder: 'Enter email',
+      rules: [
+        { required: true, message: 'Email is required' },
+        { type: 'email', message: 'Please enter a valid email' },
+      ],
+    },
+    {
+      name: 'message',
+      label: 'Message',
+      type: 'textarea',
+      placeholder: 'Enter your message',
+      rules: [{ required: true, message: 'Message is required' }],
+      colSpan: 2,
+    },
+        {
+      name: 'topic',
+      label: 'Topic',
+      type: 'input',
+      placeholder: 'Enter your topic',
+      rules: [{ required: false }],
+      colSpan: 2,
+      itemClassname: "mb-1!"
+    },
+  ];
 
   const handleTopicClick = (topic: SupportTopic) => {
     if (selectedTopics.includes(topic)) {
@@ -22,298 +58,130 @@ export function SupportAssistance() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Support form submitted:', formData);
+  const handleSubmit = (values: any) => {
+    console.log('Support form submitted:', values);
     console.log('Selected topics:', selectedTopics);
     alert('Message sent successfully!');
   };
 
   return (
-    <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '40px 24px' }}>
+    <div className="p-10">
       {/* Header */}
-      <div style={{ marginBottom: '32px' }}>
-        <h1 style={{
-          fontSize: '28px',
-          fontWeight: 700,
-          color: '#111',
-          marginBottom: '12px',
-          lineHeight: '1.1'
-        }}>
+      <div className="mb-8">
+        <h1 className="text-[28px] font-bold text-[#111] mb-3 leading-[1.1]">
           Support & Assistance
         </h1>
-        <p style={{
-          fontSize: '16px',
-          color: '#3b4858',
-          margin: 0,
-          lineHeight: '1.5'
-        }}>
+        <p className="text-[16px] text-[#3b4858] leading-[1.5]">
           Need help with your campaigns, payments, or creator partnerships? We're here to support you.
         </p>
       </div>
 
       {/* Contact Us Card */}
-      <div style={{
-        background: '#fff',
-        borderRadius: '20px',
-        padding: '24px 16px 16px',
-        boxShadow: '0px 2px 13px 0px rgba(96,99,117,0.15)',
-        marginBottom: '24px'
-      }}>
-        <h2 style={{
-          fontSize: '20px',
-          fontWeight: 700,
-          color: '#111',
-          marginBottom: '24px',
-          lineHeight: '1.1'
-        }}>
+      <div className="bg-white rounded-[20px] p-6 shadow-[0px_2px_13px_0px_rgba(96,99,117,0.15)] mb-6">
+        <h2 className="text-[20px] font-bold text-[#111] mb-6 leading-[1.1]">
           Contact Us
         </h2>
 
-        <div style={{
-          display: 'flex',
-          gap: '24px',
-          flexWrap: 'wrap',
-          alignItems: 'center'
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <MapPin style={{ width: '24px', height: '24px', color: '#6c78ff' }} />
-            <span style={{ fontSize: '16px', fontWeight: 500, color: '#111' }}>
+        <div className="flex flex-wrap gap-6 items-center">
+          <div className="flex items-center gap-2">
+            <MapPin className="w-6 h-6 text-[#6c78ff]" />
+            <span className="text-[16px] font-medium text-[#111]">
               123 Market St, San Francisco, CA 94103
             </span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Mail style={{ width: '24px', height: '24px', color: '#6c78ff' }} />
-            <span style={{ fontSize: '16px', fontWeight: 500, color: '#111' }}>
-              support@billedviews.com
+          <div className="flex items-center gap-2">
+            <Mail className="w-6 h-6 text-[#6c78ff]" />
+            <span className="text-[16px] font-medium text-[#111]">
+              support@brandfluence.com
             </span>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <Mail style={{ width: '24px', height: '24px', color: '#6c78ff' }} />
-            <span style={{ fontSize: '16px', fontWeight: 500, color: '#111' }}>
-              sales@billedviews.com
+          <div className="flex items-center gap-2">
+            <Mail className="w-6 h-6 text-[#6c78ff]" />
+            <span className="text-[16px] font-medium text-[#111]">
+              sales@brandfluence.com
             </span>
           </div>
         </div>
       </div>
 
       {/* Support Form Card */}
-      <div style={{
-        background: '#fff',
-        borderRadius: '20px',
-        padding: '24px 16px 16px',
-        boxShadow: '0px 2px 13px 0px rgba(96,99,117,0.15)'
-      }}>
-        <h2 style={{
-          fontSize: '20px',
-          fontWeight: 700,
-          color: '#111',
-          marginBottom: '32px',
-          lineHeight: '1.1'
-        }}>
+      <div className="bg-white rounded-[20px] p-6 shadow-[0px_2px_13px_0px_rgba(96,99,117,0.15)]">
+        <h2 className="text-[20px] font-bold text-[#111] mb-8 leading-[1.1]">
           How can we help you?
         </h2>
 
-        <form onSubmit={handleSubmit}>
-          {/* Name Input */}
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'flex', gap: '2px', marginBottom: '4px' }}>
-              <span style={{ color: '#494b51', fontSize: '14px' }}>Name</span>
-              <span style={{ color: '#fc1a1a' }}>*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter name"
-              required
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              style={{
-                width: '100%',
-                height: '52px',
-                borderRadius: '12px',
-                border: '1px solid #d9e2eb',
-                padding: '0 12px',
-                fontSize: '15px',
-                outline: 'none'
-              }}
-            />
-          </div>
-
-          {/* Email Input */}
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'flex', gap: '2px', marginBottom: '4px' }}>
-              <span style={{ color: '#494b51', fontSize: '14px' }}>Email</span>
-              <span style={{ color: '#fc1a1a' }}>*</span>
-            </label>
-            <input
-              type="email"
-              placeholder="Enter email"
-              required
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              style={{
-                width: '100%',
-                height: '52px',
-                borderRadius: '12px',
-                border: '1px solid #d9e2eb',
-                padding: '0 12px',
-                fontSize: '15px',
-                outline: 'none'
-              }}
-            />
-          </div>
-
-          {/* Topic Input */}
-          <div style={{ marginBottom: '20px' }}>
-            <label style={{ display: 'flex', gap: '2px', marginBottom: '4px' }}>
-              <span style={{ color: '#494b51', fontSize: '14px' }}>Topic</span>
-              <span style={{ color: '#fc1a1a' }}>*</span>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter your topic"
-              required
-              value={formData.topic}
-              onChange={(e) => setFormData({ ...formData, topic: e.target.value })}
-              style={{
-                width: '100%',
-                height: '52px',
-                borderRadius: '12px',
-                border: '1px solid #d9e2eb',
-                padding: '0 12px',
-                fontSize: '15px',
-                outline: 'none'
-              }}
-            />
-          </div>
+        <Form
+          form={form}
+          layout="vertical"
+          onFinish={handleSubmit}
+          className="mb-6"
+          requiredMark={false}
+        >
+          <FormItemRenderer items={formItems} />
 
           {/* Common Support Topics */}
-          <div style={{ marginBottom: '20px' }}>
-            <p style={{
-              color: '#494b51',
-              fontSize: '14px',
-              marginBottom: '12px'
-            }}>
+          <div className="mb-8">
+            <p className="text-[#494b51] text-[14px] mb-3">
               or choose common support topics
             </p>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-              gap: '8px'
-            }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => handleTopicClick('campaign')}
-                style={{
-                  height: '52px',
-                  borderRadius: '12px',
-                  fontSize: '14px',
-                  fontWeight: selectedTopics.includes('campaign') ? 500 : 400,
-                  background: selectedTopics.includes('campaign') ? '#dde1fa' : '#fff',
-                  border: selectedTopics.includes('campaign') ? '1px solid #6c78ff' : '1px solid #d9e2eb',
-                  color: '#111',
-                  cursor: 'pointer'
-                }}
+                className={`h-[52px] rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('campaign')
+                    ? 'bg-[#dde1fa] border border-[#6c78ff] font-medium'
+                    : 'bg-white border border-[#d9e2eb] font-normal'
+                  } text-[#111]`}
               >
                 Campaign issues
               </button>
               <button
                 type="button"
                 onClick={() => handleTopicClick('payment')}
-                style={{
-                  height: '52px',
-                  borderRadius: '12px',
-                  fontSize: '14px',
-                  fontWeight: selectedTopics.includes('payment') ? 500 : 400,
-                  background: selectedTopics.includes('payment') ? '#dde1fa' : '#fff',
-                  border: selectedTopics.includes('payment') ? '1px solid #6c78ff' : '1px solid #d9e2eb',
-                  color: '#111',
-                  cursor: 'pointer'
-                }}
+                className={`h-[52px] rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('payment')
+                    ? 'bg-[#dde1fa] border border-[#6c78ff] font-medium'
+                    : 'bg-white border border-[#d9e2eb] font-normal'
+                  } text-[#111]`}
               >
                 Payment troubleshooting
               </button>
               <button
                 type="button"
                 onClick={() => handleTopicClick('account')}
-                style={{
-                  height: '52px',
-                  borderRadius: '12px',
-                  fontSize: '14px',
-                  fontWeight: selectedTopics.includes('account') ? 500 : 400,
-                  background: selectedTopics.includes('account') ? '#dde1fa' : '#fff',
-                  border: selectedTopics.includes('account') ? '1px solid #6c78ff' : '1px solid #d9e2eb',
-                  color: '#111',
-                  cursor: 'pointer'
-                }}
+                className={`h-[52px] rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('account')
+                    ? 'bg-[#dde1fa] border border-[#6c78ff] font-medium'
+                    : 'bg-white border border-[#d9e2eb] font-normal'
+                  } text-[#111]`}
               >
                 Account login or email update help
               </button>
               <button
                 type="button"
                 onClick={() => handleTopicClick('refund')}
-                style={{
-                  height: '52px',
-                  borderRadius: '12px',
-                  fontSize: '14px',
-                  fontWeight: selectedTopics.includes('refund') ? 500 : 400,
-                  background: selectedTopics.includes('refund') ? '#dde1fa' : '#fff',
-                  border: selectedTopics.includes('refund') ? '1px solid #6c78ff' : '1px solid #d9e2eb',
-                  color: '#111',
-                  cursor: 'pointer'
-                }}
+                className={`h-[52px] rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('refund')
+                    ? 'bg-[#dde1fa] border border-[#6c78ff] font-medium'
+                    : 'bg-white border border-[#d9e2eb] font-normal'
+                  } text-[#111]`}
               >
                 Requesting a refund or credit adjustment
               </button>
             </div>
           </div>
 
-          {/* Message TextArea */}
-          <div style={{ marginBottom: '24px' }}>
-            <label style={{ display: 'flex', gap: '2px', marginBottom: '4px' }}>
-              <span style={{ color: '#494b51', fontSize: '14px' }}>Message</span>
-              <span style={{ color: '#fc1a1a' }}>*</span>
-            </label>
-            <textarea
-              placeholder="Enter your message"
-              required
-              rows={4}
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-              style={{
-                width: '100%',
-                borderRadius: '12px',
-                border: '1px solid #d9e2eb',
-                padding: '12px',
-                fontSize: '15px',
-                outline: 'none',
-                fontFamily: 'inherit',
-                resize: 'vertical'
-              }}
-            />
+          {/* Submit Button - Right Aligned */}
+          <div className="flex justify-end">
+            <Button
+              variant="primary"
+              size="md"
+              type="submit"
+            >
+              Send Message
+            </Button>
           </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            style={{
-              width: '100%',
-              height: '52px',
-              borderRadius: '12px',
-              background: '#6c78ff',
-              fontSize: '16px',
-              fontWeight: 600,
-              border: 'none',
-              color: '#fff',
-              cursor: 'pointer'
-            }}
-          >
-            Send Message
-          </button>
-        </form>
+        </Form>
       </div>
     </div>
   );

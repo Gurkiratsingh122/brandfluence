@@ -62,7 +62,7 @@ export function PrivateSidebar({ collapsed = false, onCollapse }: PrivateSidebar
         if (pathname.includes('credits')) return '/brands/credits';
         if (pathname.includes('analytics')) return '/brands/analytics';
         if (pathname.includes('settings')) return '/brands/settings';
-        return '/brands/dashboard';
+        return '';
     };
 
     return (
