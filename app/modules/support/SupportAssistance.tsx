@@ -71,7 +71,7 @@ export function SupportAssistance() {
         <h1 className="text-[28px] font-bold text-[#111] mb-3 leading-[1.1]">
           Support & Assistance
         </h1>
-        <p className="text-[16px] text-[#3b4858] leading-[1.5]">
+        <p className="text-[16px] text-[#3b4858] leading-normal">
           Need help with your campaigns, payments, or creator partnerships? We're here to support you.
         </p>
       </div>
@@ -131,7 +131,7 @@ export function SupportAssistance() {
               <button
                 type="button"
                 onClick={() => handleTopicClick('campaign')}
-                className={`h-[52px] rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('campaign')
+                className={`h-13 rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('campaign')
                     ? 'bg-[#dde1fa] border border-[#6c78ff] font-medium'
                     : 'bg-white border border-[#d9e2eb] font-normal'
                   } text-[#111]`}
@@ -141,7 +141,7 @@ export function SupportAssistance() {
               <button
                 type="button"
                 onClick={() => handleTopicClick('payment')}
-                className={`h-[52px] rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('payment')
+                className={`h-13 rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('payment')
                     ? 'bg-[#dde1fa] border border-[#6c78ff] font-medium'
                     : 'bg-white border border-[#d9e2eb] font-normal'
                   } text-[#111]`}
@@ -151,7 +151,7 @@ export function SupportAssistance() {
               <button
                 type="button"
                 onClick={() => handleTopicClick('account')}
-                className={`h-[52px] rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('account')
+                className={`h-13 rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('account')
                     ? 'bg-[#dde1fa] border border-[#6c78ff] font-medium'
                     : 'bg-white border border-[#d9e2eb] font-normal'
                   } text-[#111]`}
@@ -161,7 +161,7 @@ export function SupportAssistance() {
               <button
                 type="button"
                 onClick={() => handleTopicClick('refund')}
-                className={`h-[52px] rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('refund')
+                className={`h-13 rounded-xl text-[14px] cursor-pointer transition-all ${selectedTopics.includes('refund')
                     ? 'bg-[#dde1fa] border border-[#6c78ff] font-medium'
                     : 'bg-white border border-[#d9e2eb] font-normal'
                   } text-[#111]`}

@@ -28,7 +28,6 @@ export function ReusableFAQ({
     title = 'Frequently Asked Questions',
     subtitle = 'Everything you need to know',
     defaultOpenIndex = 0,
-    primaryColor = 'from-[#6c78ff] to-[#5566ee]',
     contactCTA = { enabled: true, title: 'Still have questions?', description: 'Our team is here to help', buttonText: 'Contact Support' }
 }: ReusableFAQProps) {
     const [openIndex, setOpenIndex] = useState<number | null>(defaultOpenIndex);
