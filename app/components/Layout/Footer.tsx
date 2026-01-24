@@ -52,7 +52,7 @@ export function Footer() {
                                 <li key={index}>
                                     <a
                                         href={link.href}
-                                        className="text-slate-400 hover:text-cyan-400 transition-colors"
+                                        className="text-slate-400! hover:text-cyan-400 transition-colors"
                                     >
                                         {link.label}
                                     </a>
@@ -70,6 +70,7 @@ export function Footer() {
                                     <a
                                         href={link.href}
                                         className="text-slate-400 hover:text-cyan-400 transition-colors"
+                                        style={{ color: '#94a3b8' } as any}
                                     >
                                         {link.label}
                                     </a>
@@ -87,6 +88,7 @@ export function Footer() {
                                     <a
                                         href={link.href}
                                         className="text-slate-400 hover:text-cyan-400 transition-colors"
+                                        style={{ color: '#94a3b8' } as any}
                                     >
                                         {link.label}
                                     </a>
@@ -104,6 +106,7 @@ export function Footer() {
                                     <a
                                         href={link.href}
                                         className="text-slate-400 hover:text-cyan-400 transition-colors"
+                                        style={{ color: '#94a3b8' } as any}
                                     >
                                         {link.label}
                                     </a>
@@ -135,9 +138,9 @@ export function Footer() {
                 <div className="border-t border-slate-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-slate-400 text-sm">
                     <p>&copy; 2026 BrandFluence. All rights reserved.</p>
                     <div className="flex gap-6">
-                        <a href="#" className="hover:text-cyan-400 transition-colors">Privacy</a>
-                        <a href="#" className="hover:text-cyan-400 transition-colors">Terms</a>
-                        <a href="#" className="hover:text-cyan-400 transition-colors">Cookies</a>
+                        <a href="#" className="hover:text-cyan-400 transition-colors" style={{ color: '#94a3b8' } as any}>Privacy</a>
+                        <a href="#" className="hover:text-cyan-400 transition-colors" style={{ color: '#94a3b8' } as any}>Terms</a>
+                        <a href="#" className="hover:text-cyan-400 transition-colors" style={{ color: '#94a3b8' } as any}>Cookies</a>
                     </div>
                 </div>
             </div>

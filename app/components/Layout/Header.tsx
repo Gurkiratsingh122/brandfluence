@@ -4,9 +4,29 @@ import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { navLinks } from '@/app/constants/navigation';
 import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+import { SignupModal } from '@/app/components/SignupModal';
 
 export function Header() {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
+    const pathname = usePathname();
+    const router = useRouter();
+
+    const handleSignupClick = () => {
+        // If on home page, open modal
+        if (pathname === '/') {
+            setIsSignupModalOpen(true);
+        }
+        // If on brands page, navigate directly to brand signup
+        else if (pathname === '/landing-page/brands') {
+            router.push('/signup/brand');
+        }
+        // If on influencers page, navigate directly to influencer signup
+        else if (pathname === '/landing-page/influencers') {
+            router.push('/signup/influencer');
+        }
+    };
 
     return (
         <header className="shadow-sm sticky top-0 z-50 backdrop-blur-lg bg-white/90">
@@ -35,7 +55,10 @@ export function Header() {
                         <button className="px-6 py-2 text-cyan-600 border-2 border-cyan-600 rounded-full hover:bg-cyan-50 transition-all font-medium">
                             Log In
                         </button>
-                        <button className="px-6 py-2 bg-cyan-600 text-white rounded-full hover:bg-cyan-700 transition-all shadow-lg shadow-cyan-600/30 font-medium">
+                        <button
+                            onClick={handleSignupClick}
+                            className="px-6 py-2 bg-cyan-600 text-white rounded-full hover:bg-cyan-700 transition-all shadow-lg shadow-cyan-600/30 font-medium"
+                        >
                             Sign Up
                         </button>
                     </div>
@@ -66,13 +89,25 @@ export function Header() {
                             <button className="px-6 py-2 text-cyan-600 border-2 border-cyan-600 rounded-full hover:bg-cyan-50 transition-all font-medium">
                                 Log In
                             </button>
-                            <button className="px-6 py-2 bg-cyan-600 text-white rounded-full hover:bg-cyan-700 transition-all shadow-lg shadow-cyan-600/30 font-medium">
+                            <button
+                                onClick={() => {
+                                    setMobileMenuOpen(false);
+                                    handleSignupClick();
+                                }}
+                                className="px-6 py-2 bg-cyan-600 text-white rounded-full hover:bg-cyan-700 transition-all shadow-lg shadow-cyan-600/30 font-medium"
+                            >
                                 Sign Up
                             </button>
                         </div>
                     </div>
                 )}
             </div>
+
+            {/* Signup Modal */}
+            <SignupModal
+                isOpen={isSignupModalOpen}
+                onClose={() => setIsSignupModalOpen(false)}
+            />
         </header>
     );
 }

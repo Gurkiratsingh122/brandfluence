@@ -44,3 +44,12 @@ background-color: #ffffff !important;
 .react-tel-input .selected-flag:hover, .react-tel-input .selected-flag:focus {
   border-radius: 12px !important;
 }
+
+.ant-modal-container{
+  @apply rounded-2xl!
+}
+
+.custom-dropdown-header-menu-item{
+  padding: 0 !important;
+  margin: 8px 0 !important;
+}

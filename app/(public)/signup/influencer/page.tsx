@@ -44,7 +44,7 @@ export default function InfluencerSignupPage() {
     return (
         <div className="min-h-screen bg-linear-to-b from-blue-50 to-indigo-50 flex items-center justify-center p-14">
             <div className="bg-white rounded-2xl shadow-lg max-w-2xl w-full">
-                <div className="px-8 py-6 border-b">
+                <div className="px-8 pt-6">
                     <TabSwitcher
                         currentTab={currentStep}
                         tabs={signUpTabs}

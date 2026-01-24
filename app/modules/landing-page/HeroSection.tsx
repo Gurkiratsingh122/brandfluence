@@ -49,7 +49,7 @@ export function HeroSection() {
             Get Started Free
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Button>
-          <Button variant="secondary">
+          <Button variant="secondary" className='whitespace-nowrap flex items-center gap-2'>
             <Play className="w-5 h-5" />
             Watch Demo
           </Button>

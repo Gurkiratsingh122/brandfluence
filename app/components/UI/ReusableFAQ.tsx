@@ -38,8 +38,8 @@ export function ReusableFAQ({
     };
 
     return (
-        <section className="py-20 bg-linear-to-b from-gray-50 to-white">
-            <div className="max-w-3xl mx-auto px-4">
+        <section className="bg-linear-to-b from-gray-50 to-white">
+            <div className="w-full mx-auto px-4">
                 {/* Section Header */}
                 <div className="text-center mb-15">
                     <h2 className="text-5xl font-bold text-gray-900 mb-4 leading-tight">
@@ -60,7 +60,7 @@ export function ReusableFAQ({
                             {/* Question Button */}
                             <button
                                 onClick={() => toggleFAQ(index)}
-                                className="w-full px-7 py-6 flex items-center justify-between text-left group"
+                                className="w-full px-7 py-4 flex items-center justify-between text-left group"
                             >
                                 <span className="text-lg font-semibold text-gray-900 pr-5 group-hover:text-blue-600 transition-colors">
                                     {faq.question}

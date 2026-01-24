@@ -63,7 +63,7 @@ export default function SignupPage() {
         alert('Account created successfully!');
     };
 
-    const steps = [{key:'credentials', label:'Account Credentials'}, {key:'company', label:'Company Details'}, {key:'payment', label:'Payment Info'}];
+    const steps = [{ key: 'credentials', label: 'Account Credentials' }, { key: 'company', label: 'Company Details' }, { key: 'payment', label: 'Payment Info' }];
 
     return (
         <div className="min-h-screen bg-linear-to-b from-blue-50 to-indigo-50 flex items-center justify-center p-14">
@@ -72,7 +72,7 @@ export default function SignupPage() {
                 {/* Card Container */}
                 <div className="bg-white rounded-2xl shadow-lg overflow-hidden max-w-2xl mx-auto">
                     {/* Step Indicator */}
-                    <div className="px-8 py-6 border-b border-gray-200">
+                    <div className="px-8 pt-6">
                         <TabSwitcher
                             currentTab={currentStep}
                             onTabChange={setCurrentStep}
