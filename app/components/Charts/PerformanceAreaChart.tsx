@@ -31,22 +31,29 @@ export function PerformanceAreaChart({
 }: PerformanceAreaChartProps) {
     return (
         <ResponsiveContainer width="100%" height={height}>
-            <AreaChart data={data}>
+            <AreaChart data={data} accessibilityLayer={false}>
                 <defs>
                     <linearGradient id="colorPerformance" x1="0" y1="0" x2="0" y2="1">
                         <stop offset="5%" stopColor={color} stopOpacity={0.3} />
                         <stop offset="95%" stopColor={color} stopOpacity={0} />
                     </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <CartesianGrid strokeDasharray="0" vertical={false} stroke="#f0f0f0" />
                 <XAxis
                     dataKey={xAxisKey}
-                    tick={{ fontSize: 12, fill: '#999' }}
-                    axisLine={{ stroke: '#f0f0f0' }}
+                    axisLine={false}
+                    tickLine={false}
+                    tickMargin={16}
+                    interval="preserveStartEnd"
+                    fontSize={14}
                 />
                 <YAxis
-                    tick={{ fontSize: 12, fill: '#999' }}
-                    axisLine={{ stroke: '#f0f0f0' }}
+                    orientation="left"
+                    axisLine={false}
+                    tickLine={false}
+                    tickMargin={16}
+                    fontSize={14}
+                    width={60}
                 />
                 <Tooltip
                     contentStyle={{

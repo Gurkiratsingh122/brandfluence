@@ -50,16 +50,24 @@ export function MultilineChart({
                         </linearGradient>
                     ))}
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#f0f0f0" />
+                <CartesianGrid strokeDasharray="0" vertical={false} stroke="#f0f0f0" />
                 <XAxis
                     dataKey={xAxisKey}
-                    tick={{ fontSize: 12, fill: '#999' }}
-                    axisLine={{ stroke: '#f0f0f0' }}
+                    axisLine={false}
+                    tickLine={false}
+                    tickMargin={16}
+                    interval="preserveStartEnd"
+                    fontSize={14}
                 />
                 <YAxis
-                    tick={{ fontSize: 12, fill: '#999' }}
-                    axisLine={{ stroke: '#f0f0f0' }}
+                    orientation="left"
+                    axisLine={false}
+                    tickLine={false}
+                    tickMargin={16}
+                    fontSize={14}
+                    width={60}
                 />
+
                 <Tooltip
                     contentStyle={{
                         background: '#1f2937',

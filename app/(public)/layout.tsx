@@ -8,7 +8,7 @@ import { Footer } from '../components/Layout/Footer';
 const PublicLayout = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
 
-  if (pathname.startsWith('/signup')) {
+  if (pathname.startsWith('/signup') || pathname.startsWith('/auth')) {
     return <>{children}</>;
   }
 
