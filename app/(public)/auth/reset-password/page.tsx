@@ -47,7 +47,7 @@ export default function ResetPasswordPage() {
           },
         },
       ],
-        colSpan: 2,
+      colSpan: 2,
       dependencies: ['password'],
     },
   ];
@@ -59,7 +59,7 @@ export default function ResetPasswordPage() {
       setIsLoading(false);
       setIsSuccess(true);
       form.resetFields();
-      
+
       // Redirect to login after 2 seconds
       setTimeout(() => {
         router.push('/auth/login');
