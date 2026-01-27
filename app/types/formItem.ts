@@ -8,7 +8,8 @@ export type FormItemType =
   | "checkbox"
   | "phone"
   | "select"
-  | "textarea";
+  | "textarea"
+  | "date";
 
 export interface FormItemConfig {
   name: string;

@@ -30,10 +30,10 @@ export function PrivateSidebar({ collapsed = false, onCollapse }: PrivateSidebar
             onClick: () => router.push('/brands/dashboard'),
         },
         {
-            key: '/brands/campaigns',
+            key: '/brands/my-campaigns',
             icon: <FileTextOutlined />,
             label: 'My Campaigns',
-            onClick: () => router.push('/brands/campaigns'),
+            onClick: () => router.push('/brands/my-campaigns'),
         },
         {
             key: '/brands/credits',
@@ -58,7 +58,7 @@ export function PrivateSidebar({ collapsed = false, onCollapse }: PrivateSidebar
     // Determine active key based on pathname
     const getActiveKey = () => {
         if (pathname.includes('dashboard')) return '/brands/dashboard';
-        if (pathname.includes('campaigns')) return '/brands/campaigns';
+        if (pathname.includes('campaigns')) return '/brands/my-campaigns';
         if (pathname.includes('credits')) return '/brands/credits';
         if (pathname.includes('analytics')) return '/brands/analytics';
         if (pathname.includes('settings')) return '/brands/settings';

@@ -1,19 +1,20 @@
 'use client';
 
-import { Form, Input, Checkbox, Select } from 'antd';
+import { Form, Input, Checkbox, Select, DatePicker } from 'antd';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import { FormItemConfig } from '@/app/types/formItem';
 
 interface FormItemRendererProps {
     items: FormItemConfig[];
+    gridCols?: string;
 }
 
-export function FormItemRenderer({ items }: FormItemRendererProps) {
+export function FormItemRenderer({ items, gridCols }: FormItemRendererProps) {
     const form = Form.useFormInstance();
 
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6">
+        <div className={`grid grid-cols-1 ${gridCols ? gridCols : 'md:grid-cols-2'} gap-x-6`}>
             {items.map((item) => {
                 const colSpanClass =
                     item.colSpan === 2 ? 'md:col-span-2' : '';
@@ -128,6 +129,16 @@ function renderField(item: FormItemConfig, form: any) {
                     dropdownStyle={{
                         zIndex: 999
                     }}
+                />
+            );
+
+        case 'date':
+            return (
+                <DatePicker
+                    size="large"
+                    placeholder={item.placeholder}
+                    className="w-full rounded-xl!"
+                    style={{ height: '44px' }}
                 />
             );
 

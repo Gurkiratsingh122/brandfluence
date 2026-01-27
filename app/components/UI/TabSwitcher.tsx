@@ -9,6 +9,7 @@ interface TabSwitcherProps {
     onTabChange: (tab: string) => void;
     tabs?: { key: string; label: string }[];
     disabledTabs?: string[];
+    buttonClassName?: string;
 }
 
 export function TabSwitcher({
@@ -16,10 +17,11 @@ export function TabSwitcher({
     onTabChange,
     tabs,
     disabledTabs = [],
+    buttonClassName = '',
 }: TabSwitcherProps) {
     return (
         <div className="w-full flex justify-center">
-            <div className="flex w-full max-w-3xl bg-white border border-blue-300 rounded-full p-1">
+            <div className="flex w-full bg-white border border-blue-300 rounded-full p-1">
                 {tabs?.map((tab) => {
                     const isActive = currentTab === tab?.key;
                     const isDisabled = disabledTabs.includes(tab?.key || '');
@@ -32,8 +34,8 @@ export function TabSwitcher({
                             variant={isActive ? 'primary' : 'secondary'}
                             size='md'
                             borderless
-                            className="flex-1 whitespace-nowrap px-6 py-3 text-sm font-medium rounded-full
-                transition-all duration-300 ease-in-out">
+                            className={`flex-1 whitespace-nowrap px-6 py-3 text-sm font-medium rounded-full
+                transition-all duration-300 ease-in-out ${buttonClassName}`}>
                             {tab?.label}
                         </Button>
                     );
