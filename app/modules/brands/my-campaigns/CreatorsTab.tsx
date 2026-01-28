@@ -4,10 +4,15 @@ import { Button } from "@/app/components/UI/Button";
 import { FormItemConfig } from "@/app/types/formItem";
 import { Form } from "antd";
 import { useState } from "react";
+import { CreatorProfileModal } from "./CreatorProfileModal";
+import { CreatorPerformanceModal } from "./CreatorPerformanceModal";
 
 export function CreatorsTab() {
     const [form] = Form.useForm()
     const [currentPage, setCurrentPage] = useState(1);
+    const [profileModalOpen, setProfileModalOpen] = useState(false);
+    const [performanceModalOpen, setPerformanceModalOpen] = useState(false);
+    const [selectedCreator, setSelectedCreator] = useState<any>(null);
 
     const filterItems: FormItemConfig[] = [
         {
@@ -174,8 +179,30 @@ export function CreatorsTab() {
         },
     ];
 
+    const handleViewApplication = (creator: any) => {
+        setSelectedCreator(creator);
+        setProfileModalOpen(true);
+    };
+
+    const handleViewPerformance = (creator: any) => {
+        setSelectedCreator(creator);
+        setPerformanceModalOpen(true);
+    };
+
     return (
         <div>
+            {/* Modals */}
+            <CreatorProfileModal
+                isOpen={profileModalOpen}
+                onClose={() => setProfileModalOpen(false)}
+                creator={selectedCreator}
+            />
+            <CreatorPerformanceModal
+                isOpen={performanceModalOpen}
+                onClose={() => setPerformanceModalOpen(false)}
+                creator={selectedCreator}
+            />
+
             {/* Filters */}
             <Form form={form} layout="vertical" requiredMark={false} className="mb-6">
                 <div className="flex justify-end">
@@ -186,7 +213,12 @@ export function CreatorsTab() {
             {/* Creator Cards Grid */}
             <div className="grid grid-cols-3 gap-6 mb-6">
                 {creators.map((creator) => (
-                    <CreatorCard key={creator.id} {...creator} />
+                    <CreatorCard
+                        key={creator.id}
+                        {...creator}
+                        onViewApplication={() => handleViewApplication(creator)}
+                        onViewPerformance={() => handleViewPerformance(creator)}
+                    />
                 ))}
             </div>
 

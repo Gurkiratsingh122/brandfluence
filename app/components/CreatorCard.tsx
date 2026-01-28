@@ -28,6 +28,8 @@ interface CreatorCardProps {
     totalViews?: string;
     primaryAction?: 'approve' | 'view-performance' | 'view-application' | 'reconsider';
     secondaryAction?: 'reject' | 'request-revision' | 'view-profile' | 'reconsider';
+    onViewApplication?: () => void;
+    onViewPerformance?: () => void;
 }
 
 export function CreatorCard({
@@ -48,6 +50,8 @@ export function CreatorCard({
     totalViews,
     primaryAction = 'approve',
     secondaryAction = 'reject',
+    onViewApplication,
+    onViewPerformance,
 }: CreatorCardProps) {
     const [requestRevisionOpen, setRequestRevisionOpen] = useState(false);
     const [confirmModal, setConfirmModal] = useState<{
@@ -73,12 +77,12 @@ export function CreatorCard({
         'view-performance': {
             label: 'View Performance',
             variant: 'primary' as const,
-            handler: () => console.log('View Performance'),
+            handler: () => onViewPerformance?.(),
         },
         'view-application': {
             label: 'View Application',
             variant: 'primary' as const,
-            handler: () => console.log('View Application'),
+            handler: () => onViewApplication?.(),
         },
         reconsider: {
             label: 'Reconsider',
