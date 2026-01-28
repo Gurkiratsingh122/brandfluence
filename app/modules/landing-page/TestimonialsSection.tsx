@@ -50,7 +50,7 @@ export function TestimonialsSection() {
             <div className="mb-6">
               <div className="w-20 h-20 rounded-2xl overflow-hidden bg-slate-100">
                 <img
-                  src={testimonial.logo}
+                  src={testimonial.logo || '/landscape_brand.jpg'}
                   alt={testimonial.company}
                   className="w-full h-full object-cover"
                 />

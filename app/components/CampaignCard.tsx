@@ -51,7 +51,7 @@ export function CampaignCard({
                 {/* Image */}
                 <div className="relative h-39.75 w-full rounded-3xl overflow-hidden border border-[rgba(46,109,254,0.42)]">
                     <img
-                        src={imageUrl}
+                        src={imageUrl || '/landscape_brand.jpg'}
                         alt={title}
                         className="w-full h-full object-cover"
                     />
@@ -149,7 +149,7 @@ export function CampaignCard({
                 <button className="flex-1 bg-[#6c78ff] text-white text-[14px] rounded-full hover:bg-[#5c68ef] transition-colors">
                     View Performance
                 </button>
-                <button 
+                <button
                     onClick={onIncreaseBudget}
                     className="flex-1 bg-white text-[#6c78ff] text-[14px] border border-[#6c78ff] rounded-full hover:bg-[#f0f1ff] transition-colors">
                     Increase Budget

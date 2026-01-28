@@ -365,7 +365,7 @@ export function AddCampaignModal({
         </div>
 
         {/* Tab Switcher */}
-                  <TabSwitcher
+        <TabSwitcher
           currentTab={currentTab}
           onTabChange={handleTabChange}
           tabs={TABS}
@@ -447,11 +447,11 @@ export function AddCampaignModal({
                 <label className="font-normal text-gray-700 block mb-3">
                   Start Date - End Date <span className="text-red-500">*</span>
                 </label>
-                <Form.Item 
-                  name="campaignDateRange" 
+                <Form.Item
+                  name="campaignDateRange"
                   rules={[{ required: true, message: 'Campaign date range is required' }]}
                 >
-                  <DatePicker.RangePicker 
+                  <DatePicker.RangePicker
                     className="w-full rounded-xl!"
                     style={{ height: '44px' }}
                     placeholder={['Start Date', 'End Date']}

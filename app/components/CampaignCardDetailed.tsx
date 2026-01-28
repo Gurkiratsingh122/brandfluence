@@ -124,7 +124,7 @@ export function CampaignCardDetailed({
 
             {/* Image */}
             <div className="relative h-32 w-full rounded-xl overflow-hidden">
-                <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
+                <img src={imageUrl || '/landscape_brand.jpg'} alt={title} className="w-full h-full object-cover" />
             </div>
 
             {/* Date and Status */}

@@ -36,10 +36,10 @@ export function PrivateSidebar({ collapsed = false, onCollapse }: PrivateSidebar
             onClick: () => router.push('/brands/my-campaigns'),
         },
         {
-            key: '/brands/credits',
+            key: '/brands/spend-credits',
             icon: <DollarOutlined />,
             label: 'Spend & Credits',
-            onClick: () => router.push('/brands/credits'),
+            onClick: () => router.push('/brands/spend-credits'),
         },
         {
             key: '/brands/analytics',
@@ -59,7 +59,7 @@ export function PrivateSidebar({ collapsed = false, onCollapse }: PrivateSidebar
     const getActiveKey = () => {
         if (pathname.includes('dashboard')) return '/brands/dashboard';
         if (pathname.includes('campaigns')) return '/brands/my-campaigns';
-        if (pathname.includes('credits')) return '/brands/credits';
+        if (pathname.includes('credits')) return '/brands/spend-credits';
         if (pathname.includes('analytics')) return '/brands/analytics';
         if (pathname.includes('settings')) return '/brands/settings';
         return '';
