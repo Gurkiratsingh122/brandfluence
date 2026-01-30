@@ -20,11 +20,11 @@ export function Header() {
         }
         // If on brands page, navigate directly to brand signup
         else if (pathname === '/landing-page/brands') {
-            router.push('/signup/brand');
+            router.push('/auth/signup/brand');
         }
         // If on influencers page, navigate directly to influencer signup
         else if (pathname === '/landing-page/influencers') {
-            router.push('/signup/influencer');
+            router.push('/auth/signup/influencer');
         }
     };
 

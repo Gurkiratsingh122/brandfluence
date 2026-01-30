@@ -15,12 +15,12 @@ export function SignupModal({ isOpen, onClose }: SignupModalProps) {
 
     const handleBrandSignup = () => {
         onClose();
-        router.push('/signup/brand');
+        router.push('/auth/signup/brand');
     };
 
     const handleInfluencerSignup = () => {
         onClose();
-        router.push('/signup/influencer');
+        router.push('/auth/signup/influencer');
     };
 
     return (
