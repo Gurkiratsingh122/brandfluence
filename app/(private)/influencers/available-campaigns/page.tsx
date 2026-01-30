@@ -6,6 +6,8 @@ import { Form, Pagination, Empty } from 'antd';
 import { RotateCcw, X } from 'lucide-react';
 import { FormItemRenderer } from '@/app/components/FormItemRenderer';
 import { OpportunityCampaignCard } from '@/app/modules/influencers/OpportunityCampaignCard';
+import { ApplyCampaignModal } from '@/app/modules/influencers/campaigns/ApplyCampaignModal';
+import { CampaignDetailsModal } from '@/app/modules/influencers/campaigns/CampaignDetailsModal';
 import { Button } from '@/app/components/UI/Button';
 import { FormItemConfig } from '@/app/types/formItem';
 
@@ -24,11 +26,13 @@ interface Campaign {
     viewCount?: string;
     applyByDate?: string;
     platforms?: ('Instagram' | 'YouTube' | 'TikTok')[];
+    modalType?: 'track' | 'viewPdf' | 'joinWaitlist' | 'notify' | 'generic';
 }
 
 const mockCampaigns: Campaign[] = [
     {
         id: 1,
+        modalType: 'viewPdf',
         variant: 'applyNow',
         title: 'Spring Launch Promo',
         brandName: 'Spring Tech',
@@ -45,6 +49,7 @@ const mockCampaigns: Campaign[] = [
     },
     {
         id: 2,
+        modalType: 'track',
         variant: 'applyNow',
         title: 'Summer Collection Launch',
         brandName: 'Fashion Hub',
@@ -61,6 +66,7 @@ const mockCampaigns: Campaign[] = [
     },
     {
         id: 3,
+        modalType: 'joinWaitlist',
         variant: 'applyNow',
         title: 'Fitness App Campaign',
         brandName: 'FitLife Pro',
@@ -77,6 +83,7 @@ const mockCampaigns: Campaign[] = [
     },
     {
         id: 4,
+        modalType: 'notify',
         variant: 'applyNow',
         title: 'Beauty Product Review',
         brandName: 'GlowBeauty Co',
@@ -106,7 +113,7 @@ const filterConfig: FormItemConfig[] = [
             { label: 'Austin, TX', value: 'Austin, TX' },
             { label: 'Miami, FL', value: 'Miami, FL' },
         ],
-         colSpan: 1
+        colSpan: 1
     },
     {
         name: 'category',
@@ -178,6 +185,57 @@ export default function AvailableCampaigns() {
         return filteredCampaigns.slice(startIndex, startIndex + pageSize);
     }, [filteredCampaigns, currentPage]);
 
+    const [applyModalOpen, setApplyModalOpen] = useState(false);
+    const [detailsModalOpen, setDetailsModalOpen] = useState(false);
+    const [activeCampaign, setActiveCampaign] = useState<Campaign | null>(null);
+
+    function openApplyModal(campaign: Campaign) {
+        setActiveCampaign(campaign);
+        setApplyModalOpen(true);
+    }
+
+    function closeApplyModal() {
+        setApplyModalOpen(false);
+        setActiveCampaign(null);
+    }
+
+    function openDetailsModal(campaign: Campaign) {
+        setActiveCampaign(campaign);
+        setDetailsModalOpen(true);
+    }
+
+    function closeDetailsModal() {
+        setDetailsModalOpen(false);
+        setActiveCampaign(null);
+    }
+
+    function mapToDetails(c: Campaign) {
+        return {
+            title: c.title,
+            brandName: c.brandName,
+            image: c.image,
+            location: c.location || '',
+            dateRange: c.applyByDate || '',
+            description: c.description || '',
+            compensation: c.estimatedPayout || '',
+            requirements: {
+                tiktok: c.platforms?.includes('TikTok') ? 1 : 0,
+                instagram: c.platforms?.includes('Instagram') ? 1 : 0,
+                youtube: c.platforms?.includes('YouTube') ? 1 : 0,
+            },
+            productInfo: {
+                title: '',
+                description: '',
+                image: c.image,
+                shippingNote: '',
+            },
+            guidelines: {
+                dos: [],
+                donts: [],
+            },
+        };
+    }
+
     const handleFilterChange = (changedFields: any) => {
         setFilters((prev) => ({ ...prev, ...changedFields }));
         setCurrentPage(1);
@@ -232,22 +290,25 @@ export default function AvailableCampaigns() {
                 {paginatedCampaigns.length > 0 ? (
                     <div className="grid grid-cols-2 gap-6 mb-8">
                         {paginatedCampaigns.map((campaign) => (
-                            <OpportunityCampaignCard
-                                key={campaign.id}
-                                variant={campaign.variant}
-                                title={campaign.title}
-                                brandName={campaign.brandName}
-                                image={campaign.image}
-                                location={campaign.location}
-                                category={campaign.category}
-                                estimatedPayout={campaign.estimatedPayout}
-                                budgetRemaining={campaign.budgetRemaining}
-                                description={campaign.description}
-                                applicantCount={campaign.applicantCount}
-                                viewCount={campaign.viewCount}
-                                applyByDate={campaign.applyByDate}
-                                platforms={campaign.platforms}
-                            />
+                            <div key={campaign.id}>
+                                <OpportunityCampaignCard
+                                    variant={campaign.variant}
+                                    title={campaign.title}
+                                    brandName={campaign.brandName}
+                                    image={campaign.image}
+                                    location={campaign.location}
+                                    category={campaign.category}
+                                    estimatedPayout={campaign.estimatedPayout}
+                                    budgetRemaining={campaign.budgetRemaining}
+                                    description={campaign.description}
+                                    applicantCount={campaign.applicantCount}
+                                    viewCount={campaign.viewCount}
+                                    applyByDate={campaign.applyByDate}
+                                    platforms={campaign.platforms}
+                                    onApply={() => openApplyModal(campaign)}
+                                    onViewDetails={() => openDetailsModal(campaign)}
+                                />
+                            </div>
                         ))}
                     </div>
                 ) : (
@@ -269,6 +330,14 @@ export default function AvailableCampaigns() {
                     </div>
                 )}
             </div>
+
+            <ApplyCampaignModal open={applyModalOpen} onClose={closeApplyModal} onSubmit={(data) => { console.log('apply submit', data); closeApplyModal(); }} campaignTitle={activeCampaign?.title} />
+            <CampaignDetailsModal
+                open={detailsModalOpen}
+                onClose={closeDetailsModal}
+                onApplyNow={() => { closeDetailsModal(); setApplyModalOpen(true); }}
+                campaign={activeCampaign ? mapToDetails(activeCampaign) : undefined}
+            />
         </div>
     );
 }

@@ -20,6 +20,8 @@ interface OpportunityCardProps {
     appliedDate?: string;
     reviewTime?: string;
     platforms?: ('Instagram' | 'YouTube' | 'TikTok')[];
+    onApply?: () => void;
+    onViewDetails?: () => void;
 }
 
 export function OpportunityCampaignCard({
@@ -38,6 +40,8 @@ export function OpportunityCampaignCard({
     appliedDate,
     reviewTime = '2–4 days',
     platforms = ['Instagram', 'YouTube', 'TikTok'],
+    onApply,
+    onViewDetails,
 }: OpportunityCardProps) {
     const platformIcons = {
         Instagram: (
@@ -293,10 +297,10 @@ export function OpportunityCampaignCard({
                     )}
                     {variant === 'applyNow' && (
                         <>
-                            <button className="flex-1 h-10 bg-[#6c78ff] text-white text-[14px] font-medium rounded-full hover:bg-[#5c68ef] transition-colors">
+                            <button type="button" onClick={onApply} className="flex-1 h-10 bg-[#6c78ff] text-white text-[14px] font-medium rounded-full hover:bg-[#5c68ef] transition-colors">
                                 Apply Now
                             </button>
-                            <button className="flex-1 h-10 bg-white border border-[#6c78ff] text-[#6c78ff] text-[14px] font-medium rounded-full hover:bg-[#f0f1ff] transition-colors">
+                            <button type="button" onClick={onViewDetails} className="flex-1 h-10 bg-white border border-[#6c78ff] text-[#6c78ff] text-[14px] font-medium rounded-full hover:bg-[#f0f1ff] transition-colors">
                                 View Details
                             </button>
                             <button className="w-10 h-10 bg-[#6c78ff] rounded-lg flex items-center justify-center hover:bg-[#5c68ef] transition-colors">
@@ -312,7 +316,7 @@ export function OpportunityCampaignCard({
                             <button className="flex-1 h-10 bg-[#6c78ff] text-white text-[14px] font-medium rounded-full hover:bg-[#5c68ef] transition-colors">
                                 Withdraw Application
                             </button>
-                            <button className="flex-1 h-10 bg-white border border-[#6c78ff] text-[#6c78ff] text-[14px] font-medium rounded-full hover:bg-[#f0f1ff] transition-colors">
+                            <button type="button" onClick={onViewDetails} className="flex-1 h-10 bg-white border border-[#6c78ff] text-[#6c78ff] text-[14px] font-medium rounded-full hover:bg-[#f0f1ff] transition-colors">
                                 View Details
                             </button>
                             <button className="w-10 h-10 bg-[#6c78ff] rounded-lg flex items-center justify-center hover:bg-[#5c68ef] transition-colors">
