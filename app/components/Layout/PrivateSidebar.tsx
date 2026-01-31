@@ -1,6 +1,6 @@
 'use client';
 
-import { Layout, Menu } from 'antd';
+import { Layout, Menu, Switch } from 'antd';
 import {
     DashboardOutlined,
     FileTextOutlined,
@@ -10,6 +10,7 @@ import {
 } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { useRouter, usePathname } from 'next/navigation';
+import { useState } from 'react';
 
 const { Sider } = Layout;
 
@@ -21,8 +22,9 @@ interface PrivateSidebarProps {
 export function PrivateSidebar({ collapsed = false, onCollapse }: PrivateSidebarProps) {
     const router = useRouter();
     const pathname = usePathname();
+    const [showInfluencerRoutes, setShowInfluencerRoutes] = useState(false);
 
-    const menuItems: MenuProps['items'] = [
+    const baseMenuItems: MenuProps['items'] = [
         {
             key: '/brands/dashboard',
             icon: <DashboardOutlined />,
@@ -55,6 +57,41 @@ export function PrivateSidebar({ collapsed = false, onCollapse }: PrivateSidebar
         },
     ];
 
+    const influencerMenuItems: MenuProps['items'] = [
+        {
+            key: '/influencers/dashboard',
+            icon: <DashboardOutlined />,
+            label: 'Dashboard',
+            onClick: () => router.push('/influencers/dashboard'),
+        },
+        {
+            key: '/influencers/my-campaigns',
+            icon: <FileTextOutlined />,
+            label: 'My Campaigns',
+            onClick: () => router.push('/influencers/my-campaigns'),
+        },
+        {
+            key: '/influencers/available-campaigns',
+            icon: <FileTextOutlined />,
+            label: 'Available Campaigns',
+            onClick: () => router.push('/influencers/available-campaigns'),
+        },
+        {
+            key: '/influencers/earnings',
+            icon: <DollarOutlined />,
+            label: 'Earnings',
+            onClick: () => router.push('/influencers/earnings'),
+        },
+        {
+            key: '/influencers/settings',
+            icon: <SettingOutlined />,
+            label: 'Settings',
+            onClick: () => router.push('/influencers/settings'),
+        },
+    ];
+
+    const menuItems: MenuProps['items'] = showInfluencerRoutes ? [...baseMenuItems, { key: 'influencers_header', label: 'Influencers', disabled: true }, ...influencerMenuItems] : baseMenuItems;
+
     // Determine active key based on pathname
     const getActiveKey = () => {
         if (pathname.includes('dashboard')) return '/brands/dashboard';
@@ -62,6 +99,12 @@ export function PrivateSidebar({ collapsed = false, onCollapse }: PrivateSidebar
         if (pathname.includes('credits')) return '/brands/spend-credits';
         if (pathname.includes('analytics')) return '/brands/analytics';
         if (pathname.includes('settings')) return '/brands/settings';
+        // influencer routes
+        if (pathname.includes('/influencers/dashboard')) return '/influencers/dashboard';
+        if (pathname.includes('/influencers/my-campaigns')) return '/influencers/my-campaigns';
+        if (pathname.includes('/influencers/available-campaigns')) return '/influencers/available-campaigns';
+        if (pathname.includes('/influencers/earnings')) return '/influencers/earnings';
+        if (pathname.includes('/influencers/settings')) return '/influencers/settings';
         return '';
     };
 
@@ -92,6 +135,14 @@ export function PrivateSidebar({ collapsed = false, onCollapse }: PrivateSidebar
                 }}
             >
                 {collapsed ? 'BV' : 'BrandFluence'}
+            </div>
+
+            {/* Influencer toggle (show/hide influencer routes) */}
+            <div style={{ padding: '10px 16px', borderBottom: '1px solid #e8eaff' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                    <span style={{ fontSize: 12, color: '#666' }}>Show Influencer Routes</span>
+                    <Switch checked={showInfluencerRoutes} onChange={(v) => setShowInfluencerRoutes(v)} size="small" />
+                </label>
             </div>
 
             {/* Menu */}
